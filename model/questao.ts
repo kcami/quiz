@@ -42,6 +42,21 @@ export default class QuestaoModel {
         return false
     }
 
+    get naoRespondida() {
+        return !this.respondida
+    }
+
+    // Revela as respostas selecionadas ou a certa
+    responderCom(indice: number): QuestaoModel {
+        const acertou = this.#respostas[indice]?.certa
+        const respostas = this.#respostas.map((resposta, i) => {
+            const respostaSelecionada = indice === i
+            const deveRevelar = respostaSelecionada || resposta.certa
+            return deveRevelar ? resposta.revelar() : resposta
+        })
+        return new QuestaoModel(this.id, this.enunciado, respostas, acertou)
+    }
+
     embaralharRespostas(): QuestaoModel {
         let respostasEmbaralhadas = Embaralhar(this.#respostas)
         // criamos uma nova instancia com as respostas embaralhadas
@@ -55,6 +70,7 @@ export default class QuestaoModel {
             respostas: this.#respostas.map(resp => resp.converterParaObjeto()),
             // precisou criar um método converterParaObjetos no PerguntasModel tbm para retornar o obj de maneira apropriada
             acertou: this.#acertou,
+            respondida: this.respondida,
         }
     }
 
