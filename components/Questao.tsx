@@ -13,6 +13,7 @@ const letras = [
 
 interface QuestaoProps {
     valor: QuestaoModel
+    tempoParaResposta?: number
     respostaFornecida: (indice: number) => void
     tempoEsgotado: () => void
 }
@@ -24,7 +25,7 @@ export default function Questao(props: QuestaoProps) {
         // colocar o key como i vai fazer com que a proxima pagina repita a chave(e da problemas)
         return questao.respostas.map((resposta, i) => { // precisa do key porque esta renderizando um array de elementos
             return <Resposta
-                        key={i}
+                        key={`${questao.id}-${i}`} // para garantir que a chave vai ser diferente
                         valor={resposta}
                         indice={i}
                         letra={letras[i].valor}
@@ -37,7 +38,8 @@ export default function Questao(props: QuestaoProps) {
     return (
         <div className={styles.questao}>
             <Enunciado texto={questao.enunciado}/>
-            <Temporizador duracao={10} tempoEsgotado={props.tempoEsgotado}/>
+            <Temporizador key={questao.id} duracao={props.tempoParaResposta ?? 10} 
+                tempoEsgotado={props.tempoEsgotado}/>
             {renderizarRespostas()}
         </div>
     )

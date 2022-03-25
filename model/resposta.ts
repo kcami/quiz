@@ -34,6 +34,12 @@ export default class RespostaModel {
         return new RespostaModel(this.#valor, this.#certa, true)
     }
 
+    // Quando tem um método estático pode chamar direto na classe RespostaModel.funcaoEstaitca()
+    // Se nao fosse estatico precisaria de uma instancia da classe
+    static criarUsandoObjeto(obj): RespostaModel {
+        return new RespostaModel(obj.valor, obj.certa, obj.revelada)
+    }
+
     converterParaObjeto() {
         return {
             valor: this.#valor,

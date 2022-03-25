@@ -1,6 +1,6 @@
-import Questao from '../../../quiz/components/Questao'
+import Questao from '../../../components/Questao'
 import questoes from '../bancoDeQuestoes'
-export default function handler(req, res) {
+export default function QuestoesParaId(req, res) {
     const idSelecionado = +req.query.id
 
     // Filter: Returns the elements of an array that meet the condition specified in a callback function.

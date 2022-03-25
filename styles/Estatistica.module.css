@@ -1,16 +1,16 @@
 .estatistica {
     display: flex;
     flex-direction: column;
-    align-items: center;
     margin: 10px;
+    align-items: center;
 }
 
 .valor {
     display: flex;
-    justify-content: center;
-    align-items: center;
     height: 180px;
     width: 180px;
+    justify-content: center;
+    align-items: center;
     border-radius: 90px;
     font-size: 4rem;
 }
@@ -20,3 +20,4 @@
     font-size: 1.7rem;
     font-weight: 200;
 }
+

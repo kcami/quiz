@@ -1,13 +1,12 @@
-import styles from '../styles/Questionario.module.css'
-import Questao from './Questao'
-import Botao from './Botao'
 import QuestaoModel from "../model/questao"
-
+import styles from '../styles/Questionario.module.css'
+import Questao from "./Questao"
+import Botao from './Botao'
 interface QuestionarioProps {
     questao: QuestaoModel
     ultima: boolean
     questaoRespondida: (questao: QuestaoModel) => void
-    irPraProximoPasso: () => void
+    irParaProximoPasso: () => void
 }
 
 export default function Questionario(props: QuestionarioProps) {
@@ -20,17 +19,16 @@ export default function Questionario(props: QuestionarioProps) {
 
     return (
         <div className={styles.questionario}>
-            {props.questao ?
-                <Questao
+            {props.questao ? 
+                <Questao 
                     valor={props.questao}
-                    tempoPraResposta={6}
+                    tempoParaResposta={6}
                     respostaFornecida={respostaFornecida}
-                    tempoEsgotado={props.irPraProximoPasso} />
+                    tempoEsgotado={props.irParaProximoPasso} />
                 : false
             }
-
-            <Botao onClick={props.irPraProximoPasso}
-                texto={props.ultima ? 'Finalizar' : 'Próxima'} />
+            <Botao onClick={props.irParaProximoPasso}
+                texto={props.ultima ? 'Finalizar' : 'Próxima'}/>
         </div>
     )
 }

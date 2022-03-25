@@ -2,6 +2,7 @@ import { CountdownCircleTimer } from 'react-countdown-circle-timer'
 import styles from '../styles/Temporizador.module.css'
 
 interface TemporizadorProps {
+    key: number // é para diferenciar cada temporizador e dai toda vez que troca de tela reiniciar o tempo
     duracao: number
     tempoEsgotado: () => void
 }

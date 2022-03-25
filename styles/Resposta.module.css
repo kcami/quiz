@@ -4,19 +4,28 @@
     height: 100px;
     width: 80%;
     margin: 10px;
+    perspective: 1000px;
 }
 
 .conteudoResposta {
     position: relative;
     display: flex;
     flex: 1;
+    transform-style: preserve-3d;
+    transition: transform 0.8s;
+}
+
+.respostaRevelada.conteudoResposta { /*nao tem um espaco entre os 2, porque os dois estao sobre o mesmo elemento (e nao um dentro do outro)*/
+    transform: rotateY(180deg);
 }
 
 .frente, .verso { /*tem posicionamento absoluto em relacao ao conteudoResposta*/
-    position: absolute; /*por contta da animacao*/
+    position: absolute; /*por conta da animacao, para usar a rotacao no centro do eixo x*/
     display: flex;
     height: 100%;
     width: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
 }
 
 .frente {
@@ -25,6 +34,10 @@
     border-radius: 12px;
     color: #000;
     padding: 15px;
+}
+
+.verso {
+    transform: rotateY(180deg);
 }
 
 .verso > div {

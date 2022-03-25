@@ -12,7 +12,7 @@ export default function Estatistica(props: EstatisticaProps) {
         <div className={styles.estatistica}>
             <div className={styles.valor} style={{
                 backgroundColor: props.corFundo ?? '#FDD60F',
-                color: props.corFonte ?? '#333'
+                color: props.corFonte ?? "#333"
             }}>
                 {props.valor}
             </div>
